@@ -65,36 +65,42 @@ export class PerformanceReviewsComponent {
       .attr('fill', (d) => color(d.data.name) as string)
       .attr('d', arc)
       .each(function (d) {
-        // Store the initial angles using a custom property
         const pathElement = this as SVGPathElement & { _current: d3.PieArcDatum<{ name: string; value: number }> };
-        pathElement._current = d;
-      })
-      .transition() // Add transition for animation
-      .duration(1000)
-      .attrTween('d', function (d) {
-        const pathElement = this as SVGPathElement & { _current: d3.PieArcDatum<{ name: string; value: number }> };
-        const interpolate = d3.interpolate(pathElement._current, d);
-        pathElement._current = interpolate(1); // Update _current to the final state
-        return function (t) {
-          return arc(interpolate(t))!;
-        };
+        pathElement._current = d; // Store the initial state
       });
   
-    // Add labels
-    svg
-      .selectAll('text')
-      .data(pie(this.data))
-      .enter()
-      .append('text')
-      .text((d) => `${d.data.name}: ${d.data.value}`)
-      .attr('transform', (d) => `translate(${arc.centroid(d)})`)
-      .style('text-anchor', 'middle')
+    // Add tooltip for hover labels
+    const tooltip = d3
+      .select(element)
+      .append('div')
+      .style('position', 'absolute')
+      .style('background', '#fff')
+      .style('border', '1px solid #ccc')
+      .style('border-radius', '4px')
+      .style('padding', '8px')
+      .style('box-shadow', '0 2px 4px rgba(0, 0, 0, 0.2)')
       .style('font-size', '12px')
-      .style('opacity', 0)
-      .transition()
-      .delay(1000)
-      .duration(500)
-      .style('opacity', 1);
+      .style('pointer-events', 'none')
+      .style('opacity', 0);
+  
+    // Add hover interaction
+    path
+      .on('mouseover', function (event, d) {
+        tooltip
+          .html(`<strong>${d.data.name}</strong>: ${d.data.value}`)
+          .style('left', `${event.pageX + 10}px`)
+          .style('top', `${event.pageY + 10}px`)
+          .style('opacity', 1);
+        d3.select(this).style('opacity', 0.8); // Highlight the segment
+      })
+      .on('mousemove', function (event) {
+        tooltip.style('left', `${event.pageX + 10}px`).style('top', `${event.pageY + 10}px`);
+      })
+      .on('mouseout', function () {
+        tooltip.style('opacity', 0); // Hide the tooltip
+        d3.select(this).style('opacity', 1); // Reset segment opacity
+      });
   }
+  
   
 }

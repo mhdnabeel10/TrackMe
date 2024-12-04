@@ -1,0 +1,21 @@
+<div class="dashboard-container">
+  <div class="main-content">
+    <header>
+      <h1>Dashboard</h1>
+    </header>
+    <div class="charts">
+      <!-- Department Overview Chart -->
+      <app-department-overview [isDepComponent]="false"></app-department-overview>
+
+      <!-- Performance Review Chart -->
+      <app-performance-reviews [isEmpList]="false"></app-performance-reviews>
+    </div>
+    <app-employee-list [isActions]="false" [isEmpComponent]="false"></app-employee-list>
+  </div>
+</div>
+
+
+
+
+
+

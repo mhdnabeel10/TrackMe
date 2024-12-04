@@ -1,0 +1,8 @@
+
+<div class="perform-main">
+    <h4>Performance Review</h4>
+    <div #chartContainer class="chart-container"></div>
+    <div *ngIf="isEmpList">
+        <app-employee-list [isActions]="false" [isReviewBtn]="true" ></app-employee-list>
+    </div>
+</div>

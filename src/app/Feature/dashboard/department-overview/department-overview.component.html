@@ -1,0 +1,21 @@
+<div class="department-main">
+  <h4>Department Overview</h4>
+  <table *ngIf="isDepComponent">
+    <thead>
+      <tr>
+        <th>Department</th>
+        <th>Average Performance Score</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let record of departmentPerformance">
+        <td>{{ record.department }}</td>
+        <td>{{ record.averageScore | number: '1.1-2' }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="bar-chart-container">
+    <div #chart class="chart-container"></div>
+  </div>
+</div>  
+

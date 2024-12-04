@@ -1,0 +1,141 @@
+<div class="container">
+  <!-- Employee Table -->
+  <div class="table-container">
+    <h3>Employee List</h3>
+    <!-- Search Bar -->
+  <div *ngIf="isEmpComponent" class="search-container">
+    <input
+      type="text"
+      [(ngModel)]="searchQuery"
+      placeholder="Search by name or department"
+      class="search-bar"
+    />
+  </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Department</th>
+          <th>Position</th>
+          <th (click)="sortByPerformance()" style="cursor: pointer;">
+            Score
+            <span *ngIf="sortAscending">&#9650;</span> <!-- Up arrow -->
+            <span *ngIf="!sortAscending">&#9660;</span> <!-- Down arrow -->
+          </th>
+          <th>Last Updated</th>
+          <th *ngIf="isActions">Actions</th>
+          <th *ngIf="isReviewBtn">Review</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of filteredEmployees">
+          <td>{{ employee.name }}</td>
+          <td>{{ employee.department }}</td>
+          <td>{{ employee.position }}</td>
+          <td>{{ employee.performance.score }}</td>
+          <td>{{ employee.performance.lastUpdated }}</td>
+          <td *ngIf="isActions">
+            <button (click)="openEditEmployeeForm(employee)">Edit</button>
+            <button (click)="deleteEmployee(employee.id)">Delete</button>
+          </td>
+          <td *ngIf="isReviewBtn">
+            <button (click)="openReviewForm(employee)">Review</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <button (click)="sortByPerformance()">Sort by Score</button>
+    <!-- Add/Edit Employee Form -->
+  <div class="form-container" *ngIf="isActions">
+    <h3>{{ isEditMode ? 'Edit Employee' : 'Add Employee' }}</h3>
+    <form (ngSubmit)="saveEmployee()" #employeeForm="ngForm">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input
+          type="text"
+          id="name"
+          [(ngModel)]="newEmployee.name"
+          name="name"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="department">Department:</label>
+        <input
+          type="text"
+          id="department"
+          [(ngModel)]="newEmployee.department"
+          name="department"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="position">Position:</label>
+        <input
+          type="text"
+          id="position"
+          [(ngModel)]="newEmployee.position"
+          name="position"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="lastUpdated">Last Updated:</label>
+        <input
+          type="date"
+          id="lastUpdated"
+          [(ngModel)]="newEmployee.performance.lastUpdated"
+          name="lastUpdated"
+        />
+      </div>
+
+      <button type="submit" [disabled]="employeeForm.invalid">
+        {{ isEditMode ? 'Update Employee' : 'Add Employee' }}
+      </button>
+      <button type="button" (click)="resetForm()">Cancel</button>
+    </form>
+    <input type="file" (change)="onFileSelect($event)" accept=".csv" />
+    <button (click)="uploadCSV()">Upload CSV</button>
+
+  </div>
+  <!-- Review Employee Form (only visible when review button clicked) -->
+  <div class="form-container" *ngIf="isReviewFormVisible">
+    <h3>Review Employee</h3>
+    <form (ngSubmit)="submitReview()" #reviewForm="ngForm">
+      <div class="form-group">
+        <label for="score">Score (1-10):</label>
+        <input
+          type="number"
+          id="score"
+          [(ngModel)]="reviewData.score"
+          name="score"
+          min="1"
+          max="10"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="comments">Comments:</label>
+        <textarea
+          id="comments"
+          [(ngModel)]="reviewData.comments"
+          name="comments"
+          rows="3"
+          required
+        ></textarea>
+      </div>
+      <button type="submit" [disabled]="reviewForm.invalid">Submit Review</button>
+      <button type="button" (click)="resetReviewForm()">Cancel</button>
+    </form>
+  </div>
+  </div>
+</div>
+
+
+
+  
+  
+  
+  

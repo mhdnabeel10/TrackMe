@@ -1,0 +1,103 @@
+{
+  "employees": [
+    {
+      "id": "1",
+      "name": "Jane Smith",
+      "department": "Marketing",
+      "position": "Marketing Specialist",
+      "performance": {
+        "lastUpdated": "2024-10-15",
+        "comments": "",
+        "score": 9
+      }
+    },
+    {
+      "id": "2",
+      "name": "Alice Johnson",
+      "department": "HR",
+      "position": "HR Manager",
+      "performance": {
+        "lastUpdated": "2024-09-05",
+        "comments": "",
+        "score": 8
+      }
+    },
+    {
+      "id": "3",
+      "name": "Robert Brown",
+      "department": "IT",
+      "position": "Software Engineer",
+      "performance": {
+        "lastUpdated": "2024-08-25",
+        "comments": "",
+        "score": 9
+      }
+    },
+    {
+      "id": "4",
+      "name": "Emma Davis",
+      "department": "Finance",
+      "position": "Accountant",
+      "performance": {
+        "lastUpdated": "2024-07-30",
+        "comments": "",
+        "score": 8
+      }
+    },
+    {
+      "id": "5",
+      "name": "nabeel",
+      "department": "IT",
+      "position": "Software Engineer",
+      "performance": {
+        "lastUpdated": "0024-12-02",
+        "comments": "Execllent",
+        "score": 9
+      }
+    }
+  ],
+  "departments": [
+    {
+      "name": "Development",
+      "value": 30,
+      "id": "77a3"
+    },
+    {
+      "name": "Marketing",
+      "value": 25,
+      "id": "a189"
+    },
+    {
+      "name": "Operations",
+      "value": 20,
+      "id": "25dc"
+    },
+    {
+      "name": "Sales",
+      "value": 25,
+      "id": "a3d7"
+    }
+  ],
+  "reviews": [
+    {
+      "name": "90 Day Review",
+      "value": 40,
+      "id": "0412"
+    },
+    {
+      "name": "Annual Review",
+      "value": 30,
+      "id": "9c8d"
+    },
+    {
+      "name": "On-demand Review",
+      "value": 15,
+      "id": "83ee"
+    },
+    {
+      "name": "Quarterly Review",
+      "value": 15,
+      "id": "34b7"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+.heading{
+    display: flex;
+    justify-content: space-between;
+    background-color: #1e293b;
+    color: azure;
+    padding: 10px;
+  }
+  h1{
+    margin-left: 10px;
+  }
+  ul{
+    display: flex;
+    margin-right: 40px;
+    gap: 30px;
+    /* padding-top: 18px; */
+  }
+  li{
+    text-decoration: none;
+    list-style: none;
+    padding: 10px 10px;
+    margin: 6px 0;
+    border-radius: 5px;
+    cursor: pointer;
+
+  }
+  li:hover{
+    
+    background-color: white;
+    color: #1e293b;
+  }

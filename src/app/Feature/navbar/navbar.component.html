@@ -1,0 +1,7 @@
+<div *ngIf="isLoginPage" class="heading">
+    <h1>TrackMe.</h1>
+    <ul *ngIf="isLoginPage">
+        <li *ngIf="isDashboard" routerLink="/dashboard">Home</li>
+        <li routerLink="/login" (click)="logout()">Log out</li>
+    </ul>
+</div>

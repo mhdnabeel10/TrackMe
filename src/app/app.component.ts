@@ -1,5 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { LoginPageComponent } from './Core/login-page/login-page.component';
 import { RouterOutlet } from '@angular/router';
+
+
+
 
 @Component({
   selector: 'app-root',
@@ -8,6 +12,14 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'employee-performance-management';
+  
+
+ 
+
+  ngOnInit() {
+    
+  }
+  
 }

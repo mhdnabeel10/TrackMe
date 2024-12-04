@@ -1,0 +1,71 @@
+
+.sidebar-main{
+    display: flex;
+    
+}
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+    width: 250px;
+    background: #1e293b;
+    color: white;
+    padding: 20px;
+  }
+  
+  .sidebar .logo {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .sidebar .menu,
+  .sidebar .account-pages ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .sidebar .menu .menu-item,
+  .sidebar  ul .menu-item {
+    padding: 10px 15px;
+    margin: 5px 0;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .sidebar .menu .menu-item:hover,
+  .sidebar .menu .menu-item.active,
+  .sidebar .account-pages ul .menu-item:hover {
+    background: white;
+    color: #1e293b;
+  }
+  
+  .sidebar .account-pages {
+    margin-top: 30px;
+  }
+  
+  
+  .sidebar .help-section {
+    margin-top: 40px;
+  }
+  
+  .sidebar .help-section p {
+    margin-bottom: 10px;
+  }
+  
+  .sidebar .help-section ,
+  .sidebar .help-section .btn-upgrade {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .sidebar .help-section .btn-upgrade {
+    background: var(--primary-color);
+    color: white;
+  }
+
+  
